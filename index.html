@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 - Mass Converter</title>
+</head>
+<body>
+    <script>
+        // Part 1: Prompt the user for their choice
+        let userChoice;
+        do {
+            userChoice = prompt("Input 1 for converting kg to lb, or input 2 for converting lb to kg, or input 3 to exit:");
+        } while (userChoice !== "1" && userChoice !== "2" && userChoice !== "3");
+
+        // Exit if the user chooses 3
+        if (userChoice === "3") {
+            document.write("<p>You chose to exit. Goodbye!</p>");
+        } else {
+            // Part 1: Prompt the user for the numeric value to convert
+            let userValue;
+            do {
+                userValue = prompt("Enter the numeric value you want to convert:");
+            } while (isNaN(userValue) || userValue === "");
+
+            // Convert the input to a number
+            userValue = parseFloat(userValue);
+
+            // Part 2: Define conversion functions
+            function convertKgToLb(kg) {
+                return kg / 0.45359237;
+            }
+
+            function convertLbToKg(lb) {
+                return lb * 0.45359237;
+            }
+
+            // Part 3: Use a switch statement to handle the conversion
+            let result;
+            switch (userChoice) {
+                case "1":
+                    result = convertKgToLb(userValue);
+                    document.write(`<p>${userValue} kg is equal to ${result.toFixed(2)} lb.</p>`);
+                    break;
+                case "2":
+                    result = convertLbToKg(userValue);
+                    document.write(`<p>${userValue} lb is equal to ${result.toFixed(2)} kg.</p>`);
+                    break;
+                default:
+                    document.write("<p>Invalid choice.</p>");
+            }
+        }
+    </script>
+</body>
+</html>
